@@ -4,13 +4,38 @@
     scrollTrigger: {
       trigger: "#page2",
       scroller: "body",
-      scrub: 5,
+      scrub: 2,
     //   markers: true,
       start: "top 0%",
       end: "top -100%",
       pin: true
     }
   });
+  ////
+  var h1=document.querySelector(".hero h1")
+  var h1Text=h1.textContent.split("")
+  var h1length=h1Text.length
+  var newText=""
+  h1Text.forEach((char,index)=>{
+    if(index<=Math.floor(h1length/2)){
+        newText+=`<span class="firsthalf">${char}</span>`
+    }else{
+           newText+=`<span class="resthalf">${char}</span>`
+    }
+  })
+  h1.innerHTML=newText
+  gsap.from(".hero h1 .firsthalf",{
+    y:80,
+    duration:1,
+    opacity:0,
+    stagger:0.15
+  })
+  gsap.from(".hero h1 .resthalf",{
+    y:80,
+    duration:1,
+    opacity:0,
+    stagger:-0.15
+  })
 var menu=document.querySelector("nav i")
 var cross=document.querySelector(".feature i")
 var feature=document.querySelector(".feature")
