@@ -1,6 +1,6 @@
 
   gsap.to("#page2 h1", {
-    transform:"translateX(-58%)",
+    transform:"translateX(-57.5%)",
     scrollTrigger: {
       trigger: "#page2",
       scroller: "body",
@@ -11,6 +11,33 @@
       pin: true
     }
   });
+  ////
+  window.addEventListener("wheel",(e)=>{
+    if(e.deltaY>0){
+        gsap.to(".text",{
+            transform:"translateX(-200%)",
+            duration:4,
+            repeat:-1,
+            // yoyo:true,
+            ease:"none"
+        })
+        gsap.to(".text img",{
+            rotate:-180,
+            duration:0.3
+        })
+    }else{
+         gsap.to(".text",{
+            transform:"translateX(0%)",
+            duration:4,
+            repeat:-1,
+            ease:"none"
+        })
+        gsap.to(".text img",{
+            rotate:0,
+            duration:0.3
+        })
+    }
+  })
   ////
   var h1=document.querySelector(".hero h1")
   var h1Text=h1.textContent.split("")
